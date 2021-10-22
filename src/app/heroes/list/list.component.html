@@ -1,0 +1,20 @@
+<p>Heroes List</p>
+
+<div *ngIf="deletedHero; else notDeleted">
+  <!--Esto significa que solo aparece el mensaje Deleted
+hero si existe algun heroe borrado. Solo apareceria cuando haga por primera vez click-->
+  <h3>
+    Deleted Hero: <small>{{ deletedHero }}</small>
+  </h3>
+</div>
+
+<ng-template #notDeleted>
+  <!-- #notDeleted es una referencia local, se simboliza con el #-->
+  <h3>You haven't deleted anything yet.</h3>
+</ng-template>
+
+<button (click)="deleteHero()">Delete</button>
+
+<ul>
+  <li *ngFor="let hero of heroes; let i = index">{{ i + 1 }} - {{ hero }}</li>
+</ul>
